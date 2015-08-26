@@ -5,6 +5,7 @@ import pl.codepot.common.{ Commit, BranchName, SHA, GitClient }
 object OptionExample {
 
   /**
+   * T2.0
    * Return author of given commit id
    *
    * Hint:
@@ -16,6 +17,7 @@ object OptionExample {
   } yield commit.author
 
   /**
+   * T2.1
    * You will compose List and Option in one For-comprehension.
    *
    * The task is to display last ten commits
@@ -37,6 +39,7 @@ object OptionExample {
   } yield sha + commit.msg
 
   /**
+   * T2.2
    * Explain why this won't compile unlike the previous example
    *
    * Answer:              scroll -->                                                                                                       option2iterable in Option companion object
@@ -47,6 +50,7 @@ object OptionExample {
   //  } yield i * j
 
   /**
+   * T2.3
    * Return the list of pairs
    *
    * a = List(Some(1),None, Some(2))

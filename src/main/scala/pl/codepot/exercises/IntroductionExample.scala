@@ -12,6 +12,7 @@ object IntroductionExample extends App {
   val rates: Map[Currency, Map[Currency, ExchangeRate]] = Map(euro -> Map(dollar -> 1.058))
 
   /**
+   * T3.0
    * Rewrite following code so it will use for-comprehensions.
    * Is it more readable?
    */
@@ -22,6 +23,7 @@ object IntroductionExample extends App {
   }
 
   /**
+   * T3.1
    * Rewrite following code so it will use for-comprehensions.
    * Is it more readable?
    */
@@ -37,6 +39,7 @@ object IntroductionExample extends App {
   }
 
   /**
+   * T3.2
    * Use for-comprehensions to print the table containing the currency name and it's exchange rates.
    * Is it better than partial anonymous functions passed to foreach blocks?
    * EUR
@@ -58,6 +61,7 @@ object IntroductionExample extends App {
   }
 
   /**
+   * T3.3
    * Play with desugaring to see what are really following code blocks
    */
   def desugaringFun = {

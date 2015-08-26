@@ -6,6 +6,7 @@ import scala.util.{ Try, Failure }
 object TryExample {
 
   /**
+   * T4.0
    * prove that Try invocation chain is stopped with first failure.
    *
    * Hint: use some visible side effect like print() to prove that other Try in not executed
@@ -20,6 +21,7 @@ object TryExample {
   } yield v2
 
   /**
+   * T4.1
    * Using String.toInt wrapped by Try implement division
    * division(a,b) = a/b
    * Use guard to not divide by 0
@@ -32,6 +34,7 @@ object TryExample {
   } yield a / b
 
   /**
+   * T4.2
    * What to do with exception in Try?
    *
    * Using this method exercise handling failures with
@@ -45,6 +48,7 @@ object TryExample {
   } yield division
 
   /**
+   * T4.3
    * Enable options to work with Try.
    *
    * What if under Try object there is hidden exception?

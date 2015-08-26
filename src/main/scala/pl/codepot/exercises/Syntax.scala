@@ -7,7 +7,7 @@ import reflect.runtime.universe.{ reify => desugar }
 
 object Syntax extends App {
 
-  /**
+  /** T7.0
    * Why it is not compiling?
    * Not specific to for-comprehensions but could save you few minutes once
    */
@@ -19,6 +19,7 @@ object Syntax extends App {
   }
 
   /**
+   * T7.1
    * Why is this example compiling, while this generators have different shape?
    *
    * Hint: use desugar() and definition of flatMap
@@ -36,30 +37,4 @@ object Syntax extends App {
 
   }
 
-  def filterWithFilterDifference = {
-
-    val isLessThan3_sideeffect = (x: Int) => {
-      print(x)
-      x < 3
-    }
-
-    println(desugar {
-      val l = for {
-        a <- List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-        if isLessThan3_sideeffect(a)
-      } yield a
-      l.take(1)
-    })
-    Stream.apply(1, 2, 3, 4).filter(isLessThan3_sideeffect).take(1)
-    println()
-
-    println(desugar {
-      var found = false
-      val z = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).withFilter(_ % 2 == 1 && !found).foreach(x => if (x == 5) found = true else println(x))
-      print(z)
-    })
-    // val k = List(1, 2, 3, 4).withFilter(_ < 3).map(identity)
-  }
-
-  // filterWithFilterDifference
 }

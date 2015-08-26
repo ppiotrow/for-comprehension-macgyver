@@ -11,6 +11,7 @@ import scala.concurrent.{ Await, Future }
 object FutureExample extends App {
 
   /**
+   * T5.0
    * Convert transaction to be in EUR
    * Assume that given transaction id is for transaction in different currency than EUR
    *
@@ -26,6 +27,7 @@ object FutureExample extends App {
   } yield t.copy(currency = Currency("EUR"), amount = converted)
 
   /**
+   * T5.1
    * Print given amount(PLN) in USD and EUR
    *
    * Hint:
@@ -43,6 +45,7 @@ object FutureExample extends App {
   //  makeItFaster(10.0)
 
   /**
+   * T5.2
    * How to handle guard?
    *
    * Hint:
@@ -58,6 +61,7 @@ object FutureExample extends App {
   }
 
   /**
+   * T5.3
    * Examine the execution time of the example with and without guard
    * @return
    */
@@ -77,6 +81,7 @@ object FutureExample extends App {
   //  breakChain
 
   /**
+   * T5.4
    * How to compose future[Option[T] in one for-comprehension
    *
    * Return projects of author of given commit id
@@ -95,6 +100,7 @@ object FutureExample extends App {
   }
 
   /**
+   * T5.5
    * Use optionT from scalaz.OptionT._ to compose two Future[Option[
    *
    * Hint:
@@ -115,6 +121,7 @@ object FutureExample extends App {
   }
 
   /**
+   * T5.5
    * If world is beautiful place then ask your boss for money and print what you received.
    * Use akka.pattern.ask to combine aktor responses together
    */

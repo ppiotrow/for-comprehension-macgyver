@@ -7,6 +7,7 @@ object EitherExample {
   val b = Beans("Arabica")
   val c = Cookies(20)
   /**
+   * T6.0
    * Using water and coffee beans produce espresso
    * and then mix it with cookies to have delicious tiramisu
    *
@@ -23,6 +24,7 @@ object EitherExample {
   } yield tiramisu
 
   /**
+   * T6.1
    * Combine Option with Either in for comprehension
    *
    * Hint:
@@ -38,6 +40,7 @@ object EitherExample {
   }
 
   /**
+   * T6.2
    * Return espresso only if it is sweet.
    *
    * Is it possible to use guard with Either?
@@ -48,6 +51,7 @@ object EitherExample {
   } yield espresso
 
   /**
+   * T6.3
    * Check alternative from Scalaz
    */
   def disjunction(water: Water, beans: Beans, cookies: Cookies): Either[String, Tiramisu] = {

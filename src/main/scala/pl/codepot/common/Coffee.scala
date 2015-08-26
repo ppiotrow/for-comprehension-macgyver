@@ -13,7 +13,7 @@ object CoffeeMachine {
     if (water.temperature > 100)
       Left("Water too hot")
     else if (water.temperature < 93)
-      Left("Water to cold")
+      Left("Water too cold")
     else if (!beans.kind.equals("Robusta"))
       Left("Wrong type of beans")
     else
