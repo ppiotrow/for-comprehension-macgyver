@@ -86,12 +86,12 @@ object IntroductionExample extends App {
     //      } print(j)
     //    }.tree)
 
-    /**this code after desugaring is not much readable. Could you clear it a little bit?**/
+    /**this code after desugaring is not much readable. Could you sketch it in clearer form?**/
     //    for {
     //      i <- Some(1)
     //      j = i + 1
     //    } yield j
 
   }
-  desugaringFun
+//  desugaringFun
 }
