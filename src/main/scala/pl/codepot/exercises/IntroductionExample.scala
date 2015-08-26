@@ -1,6 +1,6 @@
 package pl.codepot.exercises
 
-import pl.codepot.common.Currency
+import pl.codepot.common.{ Espresso, Currency }
 
 import reflect.runtime.universe.{ reify => desugar }
 
@@ -85,6 +85,13 @@ object IntroductionExample extends App {
     //        if j % 2 == 0
     //      } print(j)
     //    }.tree)
-  }
 
+    /**this code after desugaring is not much readable. Could you clear it a little bit?**/
+    //    for {
+    //      i <- Some(1)
+    //      j = i + 1
+    //    } yield j
+
+  }
+  desugaringFun
 }

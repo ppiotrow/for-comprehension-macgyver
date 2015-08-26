@@ -3,6 +3,9 @@ package pl.codepot.exercises
 import pl.codepot.common._
 
 object EitherExample {
+  val w = Water(88)
+  val b = Beans("Arabica")
+  val c = Cookies(20)
   /**
    * Using water and coffee beans produce espresso
    * and then mix it with cookies to have delicious tiramisu
@@ -45,5 +48,22 @@ object EitherExample {
     espresso <- CoffeeMachine.espresso(water, beans).right
   } yield espresso
 
-  def disjunction = ???
+  /**
+   * Check alternative from Scalaz
+   */
+  def disjunction(water: Water, beans: Beans, cookies: Cookies): Either[String, Tiramisu] = {
+    import scalaz._
+    import Scalaz._
+
+    val espresso: String \/ Espresso = CoffeeMachine.espresso(water, beans).disjunction
+    val expected = for {
+      e <- espresso
+      sweetEspresso = e.sweeten // assignment?
+      tiramisu <- TiramisuFactory.create(cookies, sweetEspresso).disjunction
+      //if tiramisu.hashCode() != 1234 // Possible to filter?
+    } yield tiramisu
+
+    expected.toEither
+  }
+  //print(disjunction(w, b, c))
 }
