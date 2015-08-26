@@ -1,6 +1,6 @@
 package pl.codepot.exercises
 
-import pl.codepot.common.{ BranchName, GitClient }
+import pl.codepot.common.{ Commit, BranchName, GitClient }
 
 /**
  *
@@ -16,7 +16,7 @@ object ListExample {
    * use GitClient.log(branchname)
    *     Commit.author.startWith
    */
-  def linusCommits = for {
+  def linusCommits: List[Commit] = for {
     commit <- GitClient.log(master)
     if commit.author.startsWith("Linus")
   } yield commit

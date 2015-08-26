@@ -1,5 +1,7 @@
 package pl.codepot.exercises
 
+import akka.actor.{ Props, ActorSystem, Actor }
+import akka.util.Timeout
 import pl.codepot.common._
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -112,8 +114,34 @@ object FutureExample extends App {
     } yield j).run
   }
 
-  def futureSequence = ???
+  /**
+   * If world is beautiful place then ask your boss for money and print what you received.
+   * Use akka.pattern.ask to combine aktor responses together
+   */
+  def akkaFun = {
+    import akka.pattern.ask
+    import scala.concurrent.duration._
+    val system = ActorSystem()
+    implicit val timeout = Timeout(1.second)
+    val omniscient = system.actorOf(Props(new Actor {
+      def receive = {
+        case "Is the world beautiful place?" => sender() ! true
+      }
+    }))
+    val boss = system.actorOf(Props(new Actor {
+      def receive = {
+        case "Money!" => sender() ! ":)"
+      }
+    }))
 
-  def akkaFun = ???
+    for {
+      answer <- ask(omniscient, "Is the world beautiful place?").mapTo[Boolean]
+      if answer
+      money <- ask(boss, "Money!").mapTo[String]
+    } println(s"My boss gave me $money because world is beautiful place")
+
+    ///
+    system.shutdown()
+  }
 
 }

@@ -35,7 +35,6 @@ object EitherExample {
       sweetEspresso <- espresso.toRight("No espresso found").right
       tiramisu <- TiramisuFactory.create(cookies, sweetEspresso).right
     } yield tiramisu
-
   }
 
   /**
