@@ -4,7 +4,7 @@ import pl.codepot.common.{ Espresso, Currency }
 
 import reflect.runtime.universe.{ reify => desugar }
 
-object IntroductionExample extends App {
+object IntroductionExample {
 
   type ExchangeRate = Double
   val euro = Currency("EUR")

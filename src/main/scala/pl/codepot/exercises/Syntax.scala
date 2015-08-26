@@ -5,9 +5,10 @@ import scala.util.Try
 import scala.concurrent.ExecutionContext.Implicits.global
 import reflect.runtime.universe.{ reify => desugar }
 
-object Syntax extends App {
+object Syntax {
 
-  /** T7.0
+  /**
+   * T7.0
    * Why it is not compiling?
    * Not specific to for-comprehensions but could save you few minutes once
    */

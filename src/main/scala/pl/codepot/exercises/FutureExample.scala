@@ -8,7 +8,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import scala.concurrent.{ Await, Future }
 
-object FutureExample extends App {
+object FutureExample {
 
   /**
    * T5.0
