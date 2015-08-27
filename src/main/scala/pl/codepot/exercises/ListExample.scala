@@ -17,8 +17,38 @@ object ListExample {
    * use GitClient.log(branchname)
    *     Commit.author.startWith
    */
+  def linusCommits: List[Commit] = ???
+
+  //linusCommits.foreach(println)
+}
+
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ * move answers down
+ */
+object ListAnswers {
+  val master = BranchName("master")
+  val linus = "Linus"
+  /**
+   * A1.0
+   */
   def linusCommits: List[Commit] = for {
     commit <- GitClient.log(master)
-    if commit.author.startsWith("Linus")
+    if commit.author.startsWith(linus)
   } yield commit
 }

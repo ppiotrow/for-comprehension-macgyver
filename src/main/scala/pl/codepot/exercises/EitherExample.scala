@@ -17,11 +17,9 @@ object EitherExample {
    * use CoffeeMachine.espresso
    * use TiramisuFactory.create
    */
-  def tiramisuMaker(water: Water, beans: Beans, cookies: Cookies): Either[String, Tiramisu] = for {
-    espresso <- CoffeeMachine.espresso(water, beans).right
-    sweetEspresso <- Right(espresso.sweeten).right
-    tiramisu <- TiramisuFactory.create(cookies, sweetEspresso).right
-  } yield tiramisu
+  def tiramisuMaker(water: Water, beans: Beans, cookies: Cookies): Either[String, Tiramisu] = ???
+
+  //print(tiramisuMaker(w, b, c))
 
   /**
    * T6.1
@@ -33,10 +31,7 @@ object EitherExample {
   def optionToEither(cookies: Cookies): Either[String, Tiramisu] = {
     val espresso: Option[Espresso] = Option(Espresso(isSweet = true))
 
-    for {
-      sweetEspresso <- espresso.toRight("No espresso found").right
-      tiramisu <- TiramisuFactory.create(cookies, sweetEspresso).right
-    } yield tiramisu
+    ???
   }
 
   /**
@@ -69,4 +64,38 @@ object EitherExample {
     expected.toEither
   }
   //print(disjunction(w, b, c))
+
+}
+
+object EitherAnswers {
+  val w = Water(88)
+  val b = Beans("Arabica")
+  val c = Cookies(20)
+
+  /**
+   * A6.0
+   */
+  def tiramisuMaker(water: Water, beans: Beans, cookies: Cookies): Either[String, Tiramisu] = for {
+    espresso <- CoffeeMachine.espresso(water, beans).right
+    sweetEspresso <- Right(espresso.sweeten).right
+    tiramisu <- TiramisuFactory.create(cookies, sweetEspresso).right
+  } yield tiramisu
+
+  /**
+   * A6.1
+   */
+  def optionToEither(cookies: Cookies): Either[String, Tiramisu] = {
+    val espresso: Option[Espresso] = Option(Espresso(isSweet = true))
+
+    for {
+      sweetEspresso <- espresso.toRight("No espresso found").right
+      tiramisu <- TiramisuFactory.create(cookies, sweetEspresso).right
+    } yield tiramisu
+  }
+
+  /**
+   * A6.2
+   * No. Either don't have withFilter method
+   */
+
 }

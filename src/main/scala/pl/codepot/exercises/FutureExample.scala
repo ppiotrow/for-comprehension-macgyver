@@ -21,10 +21,8 @@ object FutureExample {
    *     TransactionService.get
    *     CurrencyService.convertToEUR
    */
-  def convertToEur(id: TransactionId): Future[Transaction] = for {
-    t @ Transaction(_, _, amount, currency) <- TransactionService.get(id)
-    converted <- CurrencyService.convertToEUR(amount, currency)
-  } yield t.copy(currency = Currency("EUR"), amount = converted)
+  def convertToEur(id: TransactionId): Future[Transaction] = ???
+  //print(Await.result(convertToEur(TransactionId("123")), 5.seconds))
 
   /**
    * T5.1
@@ -86,7 +84,98 @@ object FutureExample {
    *
    * Return projects of author of given commit id
    * Hint:
-   * Use deconstruction
+   *  RemoteGitClient.get(sha)
+   *  Use deconstruction on Some
+   */
+  def futureOption(): Future[List[String]] = {
+    val sha = SHA("1213123213123")
+    def projects(author: Commit.Author) = Future.successful(List("scala/scala", "akka/akka", "EnterpriseQualityCoding/FizzBuzzEnterpriseEdition"))
+
+    ???
+  }
+
+  /**
+   * T5.5
+   * Use optionT from scalaz.OptionT._ to compose two Future[Option[
+   *
+   * Hint:
+   *  RemoteGitClient.get(sha)
+   *  I recommend just google stackoverflow
+   * @return
+   */
+  def futureOptionScalaZ: Future[Option[Commit]] = {
+    import scalaz._
+    import Scalaz._
+    import scalaz.OptionT._
+    val shaF = Future.successful(Option(SHA("1213123213123")))
+
+    ???
+  }
+
+  /**
+   * T5.6
+   * If world is beautiful place then ask your boss for money and print what you received.
+   * Use akka.pattern.ask to combine aktor responses together
+   */
+  def akkaFun = {
+    import akka.pattern.ask
+    import scala.concurrent.duration._
+    val system = ActorSystem()
+    implicit val timeout = Timeout(1.second)
+    val omniscient = system.actorOf(Props(new Actor {
+      def receive = {
+        case "Is the world beautiful place?" => sender() ! true
+      }
+    }))
+    val boss = system.actorOf(Props(new Actor {
+      def receive = {
+        case "Money!" => sender() ! ":)"
+      }
+    }))
+
+    ???
+
+    ///
+    system.shutdown()
+  }
+
+}
+
+object FutureAnswers {
+
+  /**
+   * A5.0
+   */
+  def convertToEur(id: TransactionId): Future[Transaction] = for {
+    t @ Transaction(_, _, amount, currency) <- TransactionService.get(id)
+    converted <- CurrencyService.convertToEUR(amount, currency)
+  } yield t.copy(currency = Currency("EUR"), amount = converted)
+
+  /**
+   * A5.1
+   */
+  def makeItFaster(amount: Double): Future[Unit] = {
+    val usd = Currency("USD")
+    val eur = Currency("EUR")
+    val inUSDF = CurrencyService.convertPlnTo(amount, usd)
+    val inEURF = CurrencyService.convertPlnTo(amount, eur)
+    for {
+      inUSD <- inUSDF
+      inEUR <- inEURF
+      _ = println(s"$amount PLN is $inUSD USD or $inEUR EUR")
+    } yield ()
+  }
+
+  /**
+   * A5.2
+   */
+
+  /**
+   * A5.3
+   */
+
+  /**
+   * A5.4
    */
   def futureOption(): Future[List[String]] = {
     val sha = SHA("1213123213123")
@@ -100,15 +189,9 @@ object FutureExample {
   }
 
   /**
-   * T5.5
-   * Use optionT from scalaz.OptionT._ to compose two Future[Option[
-   *
-   * Hint:
-   *  RemoteGitClient.get()
-   * I recommend just google stackoverflow
-   * @return
+   * A5.5
    */
-  def futureOptionScalaZ = {
+  def futureOptionScalaZ: Future[Option[Commit]] = {
     import scalaz._
     import Scalaz._
     import scalaz.OptionT._
@@ -121,9 +204,7 @@ object FutureExample {
   }
 
   /**
-   * T5.5
-   * If world is beautiful place then ask your boss for money and print what you received.
-   * Use akka.pattern.ask to combine aktor responses together
+   * A5.6
    */
   def akkaFun = {
     import akka.pattern.ask
@@ -150,5 +231,4 @@ object FutureExample {
     ///
     system.shutdown()
   }
-
 }

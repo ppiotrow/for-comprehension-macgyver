@@ -7,21 +7,6 @@ object TryExample {
 
   /**
    * T4.0
-   * prove that Try invocation chain is stopped with first failure.
-   *
-   * Hint: use some visible side effect like print() to prove that other Try in not executed
-   */
-  def chain = for {
-    v1 <- Try(throw new RuntimeException("It was my fault"))
-    v2 <- Try {
-      print("(Un)Expected side effect")
-      Thread.sleep(10 * 1000)
-      Source.fromURL("www.google.pl").mkString
-    }
-  } yield v2
-
-  /**
-   * T4.1
    * Using String.toInt wrapped by Try implement division
    * division(a,b) = a/b
    * Use guard to not divide by 0
@@ -34,18 +19,26 @@ object TryExample {
   } yield a / b
 
   /**
-   * T4.2
+   * T4.1
    * What to do with exception in Try?
    *
-   * Using this method exercise handling failures with
+   * Using previus function division(dividend: String, divisor: String) exercise handling failures with
    *  pattern matching
    *  recover
    */
-  def abc(): Try[Int] = for {
-    a <- Try("1".toInt)
-    b <- Try("0".toInt)
-    division <- Try(a / b)
-  } yield division
+  //division("0","0")
+
+  /**
+   * T4.2
+   * prove that Try invocation chain is stopped with first failure.
+   *
+   * Hint: use some visible side effect like print() to prove that other Try in not executed
+   */
+  def chain = for {
+    v1 <- Try(throw new RuntimeException("It was my fault"))
+    //v2 <- Try {}
+
+  } yield v1 //} yield v2
 
   /**
    * T4.3
@@ -55,7 +48,30 @@ object TryExample {
    */
   def tryWithOption: Option[Int] = for {
     i <- Some(1)
+    //    j <- Try(1)
+  } yield i //+ j
+
+}
+
+object TryAnswers {
+
+  /**
+   * A4.2
+   */
+  def chain = for {
+    v1 <- Try(throw new RuntimeException("It was my fault"))
+    v2 <- Try {
+      print("(Un)Expected side effect")
+      Thread.sleep(10 * 1000)
+      Source.fromURL("www.google.pl").mkString
+    }
+  } yield v2
+
+  /**
+   * A4.3
+   */
+  def tryWithOption: Option[Int] = for {
+    i <- Some(1)
     j <- Try(1).toOption
   } yield i + j
-  tryWithOption
 }

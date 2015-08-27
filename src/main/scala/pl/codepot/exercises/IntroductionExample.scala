@@ -99,3 +99,17 @@ object IntroductionExample {
   }
   //  desugaringFun
 }
+
+object IntroductionAnswers {
+  /**
+   * A3.0
+   */
+
+  /**
+   * A3.1
+   */
+
+  /**
+   * A3.2
+   */
+}

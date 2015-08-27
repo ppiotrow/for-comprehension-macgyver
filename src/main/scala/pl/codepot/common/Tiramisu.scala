@@ -1,7 +1,6 @@
 package pl.codepot.common
 
 case class Water(temperature: Int)
-
 case class Beans(kind: String)
 
 case class Espresso(isSweet: Boolean = false) {
