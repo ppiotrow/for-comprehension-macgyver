@@ -7,7 +7,7 @@ Discover the possibilities of map, flatMap and filter and it's all available und
 During the workshop you will learn how to use it with the types List, Option, Try, Future and Either.
 I will present standard techniques and potential pitfalls.
 
-# Slides [PL]
+# Slides
 
 [Link](http://slides.com/przemekpiotrowski/deck-3#/)
 
