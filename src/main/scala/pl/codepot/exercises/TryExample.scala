@@ -22,7 +22,7 @@ object TryExample {
    * T4.1
    * What to do with exception in Try?
    *
-   * Using previus function division(dividend: String, divisor: String) exercise handling failures with
+   * Using previous function division(dividend: String, divisor: String) exercise handling failures with
    *  pattern matching
    *  recover
    */

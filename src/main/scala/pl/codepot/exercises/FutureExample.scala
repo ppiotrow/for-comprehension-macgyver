@@ -48,7 +48,7 @@ object FutureExample {
    *
    * Hint:
    * Is `result`filled with Success or Failure?
-   * How to recover() from failure? Especialy from NoSuchElementException?
+   * How to recover() from failure? Especially from NoSuchElementException?
    */
   def futureGuardProblem = {
     val result = for {
@@ -61,7 +61,6 @@ object FutureExample {
   /**
    * T5.3
    * Examine the execution time of the example with and without guard
-   * @return
    */
   def breakChain = {
     def sleepAndGet[T](seconds: Int, value: T) = Future {
@@ -80,7 +79,7 @@ object FutureExample {
 
   /**
    * T5.4
-   * How to compose future[Option[T] in one for-comprehension
+   * How to compose Future[Option[T] in one for-comprehension
    *
    * Return projects of author of given commit id
    * Hint:
