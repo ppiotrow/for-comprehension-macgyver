@@ -1,17 +1,20 @@
 # For-comprehension Macgyver
 
-MacGyver przy pomocy srebrnej taśmy, sznurka i noża mógł zbudować wszystko. Zostań MacGyver'em świata programowania. Odkryj możliwości map, flatMap i filter a to wszystko dostępne pod wszechstronnym lukrem składniowym for-comprehension.
+MacGyver with silver tape, string and knife could build anything.
+Become MacGyver of the programming world!
+Discover the possibilities of map, flatMap and filter and it's all available under the best syntactic sugar for-comprehension.
 
-W trakcie warsztatów dowiesz się jak używać go z typami Option, Try, Future i Either. Zaprezentuję standardowe techniki oraz potencjalne pułapki.
+During the workshop you will learn how to use it with the types List, Option, Try, Future and Either.
+I will present standard techniques and potential pitfalls.
 
 # Slides [PL]
 
 [Link](http://slides.com/przemekpiotrowski/deck-3#/)
 
 # Links
-Used in presentatnion/workshop or just useful.
+Used in presentation/workshop or just useful.
 
-* http://www.scala-lang.org/docu/files/ScalaByExample.pdf
+* http://www.scala-lang.org/files/archive/spec/2.11/06-expressions.html#for-comprehensions-and-for-loops
 * http://arosien.github.io/lovely-for-comps/#slide1
 * https://www.youtube.com/watch?v=n_j2hzHQlNI
 * http://danielwestheide.com/blog/2012/12/26/the-neophytes-guide-to-scala-part-6-error-handling-with-try.html
